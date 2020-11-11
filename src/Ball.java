@@ -7,6 +7,10 @@ class Ball {
     private int col;
     private float speedY;
     private float speedX;
+    public float useX;
+    public float useY;
+    public float tempSX;
+    public float tempSY;
 
     /**
      * The default constructor generates random values for most of the instance
@@ -17,27 +21,74 @@ class Ball {
         diameter = s.random(50, 150); // random diameter between 50 and 150
         x = s.random(diameter / 2, s.width - diameter / 2);
         y = s.random(diameter / 2, s.height - diameter / 2);
+        useX = x;
+        useY = y;
+        tempSX = 5;
+        tempSY = 5;
 
         /*
          * SUMMATIVE REQUIRED use the randomColor() method in the sketch to set default
          * balls to a solid random color
          */
 
+        col = s.randomColor(false);
+
+
+
         /*
          * SUMMATIVE REQUIRED Set speedX and speedY to reasonable defaults. Random
          * numbers could be nice, but are not required.
          */
+
+
+        speedY = 5;
+        speedX = 5;
     }
 
     /** This constructor lets you specify all of the ball instance variables */
-    public Ball(Sketch s, float X, float Y, float ballDiam, int ballColor, float sx, float sy) {
+    public Ball(Sketch sketch, float X, float Y, float ballDiam, int ballColor, float sx, float sy) {
         /* SUMMATIVE REQUIRED Fill out this constructor */
+      s = sketch;
+      x = X;
+      y = Y;
+      useX = X;
+      useY = Y;
+      diameter = ballDiam;
+      col = ballColor;
+      speedY = sy;
+      speedX = sx;
+      tempSX = sx;
+      tempSY = sy; 
+      
+
+
     }
 
     /*
      * SUMMATIVE REQUIRED Add a method called `getRadius()` that returns a float
      * representing the radius of the ball
      */
+    public float getRadius(){
+      return diameter / 2;
+
+
+
+    }
+
+    public void stop(){
+      speedX = 0;
+      speedY = 0;
+
+
+
+    }
+    public void start(){
+      speedX = tempSX;
+      speedY = tempSY;
+
+
+
+    }
 
     /*
      * SUMMATIVE OPTIONAL Add a method called `stop()` that sets the ball speed to
@@ -46,7 +97,7 @@ class Ball {
      * 
      * If you create the methods, you'll need to think of a way to test them...
      */
-
+      
     /** Draws the ball. */
     public void drawBall() {
         /*
@@ -74,4 +125,5 @@ class Ball {
         x += speedX;
         y += speedY;
     }
+    
 }

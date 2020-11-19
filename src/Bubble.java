@@ -17,7 +17,47 @@ class Bubble {
      * mostly default and one that allows custom values for whichever you want to be
      * able to change. Remember that bubbles should RISE - when setting default values,
      * take that into account!
-     * 
+    */
+
+    public Bubble(Sketch sketch) {
+        s = sketch;
+        diameter = s.random(20, 100);
+        x = s.random(diameter / 2, s.width - diameter / 2);
+        y = s.random(diameter / 2, s.height - diameter / 2);
+        speedY = -15;
+        speedX = -15;
+        col = s.color(255, 150);
+    }
+    public Bubble(Sketch sketch, float X, float Y, float bubbleDiam, int bubbleColor, float sx, float sy) {
+      s = sketch;
+      x = X;
+      y = Y;
+      diameter = bubbleDiam;
+      col = bubbleColor;
+      speedY = sy;
+      speedX = sx;
+      
+
+
+    }
+    public Bubble(Sketch sketch, float bubbleDiam, float sx, float sy) {
+      s = sketch;
+      x = s.random(diameter / 2, s.width - diameter / 2);
+      y = s.random(diameter / 2, s.height - diameter / 2);
+      diameter = bubbleDiam;
+      col = s.color(255, 150);
+      speedY = sy;
+      speedX = sx;
+      
+
+
+    }
+
+
+
+
+
+     /* 
      * You can use `s.color(255, 150)` to create a transluscent 
      * white color if you wish
      * 
@@ -33,7 +73,14 @@ class Bubble {
      * SUMMATIVE REQUIRED Add a method called `getRadius()` that returns a float
      * representing the radius of the bubble
      */
+     
+     public float getRadius(){
+      return diameter / 2;
 
+
+
+    }
+ 
     /** Draws the bubble. */
     public void drawBubble() {
         s.stroke(borderColor);
@@ -52,8 +99,17 @@ class Bubble {
         /* SUMMATIVE OPTIONAL Tweak bubble movement so that it moves more randomly */
 
         /* If the bubble is on the left or right edge, bounce! */
-        if (x > (s.width - getRadius()) || x < getRadius()) {
-            speedX = -speedX;
+        if (x > (s.width + getRadius()) ) {
+            x = 0 - getRadius();
+        }
+
+
+
+        if (x < (0 - getRadius())){
+          x = s.width + getRadius();
+
+
+        
         }
         /* If the ball goes off the top, move it to the bottom. */
         if (y < (-getRadius())) {

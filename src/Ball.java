@@ -7,6 +7,8 @@ class Ball {
     private int col;
     private float speedY;
     private float speedX;
+    private float tempSX;
+    private float tempSY;
 
     /**
      * The default constructor generates random values for most of the instance
@@ -23,21 +25,77 @@ class Ball {
          * balls to a solid random color
          */
 
+        col = s.randomColor(false);
+
+
+
         /*
          * SUMMATIVE REQUIRED Set speedX and speedY to reasonable defaults. Random
          * numbers could be nice, but are not required.
          */
+
+
+        speedY = 5;
+        speedX = 5;
     }
 
     /** This constructor lets you specify all of the ball instance variables */
-    public Ball(Sketch s, float X, float Y, float ballDiam, int ballColor, float sx, float sy) {
+    public Ball(Sketch sketch, float X, float Y, float ballDiam, int ballColor, float sx, float sy) {
         /* SUMMATIVE REQUIRED Fill out this constructor */
+      s = sketch;
+      x = X;
+      y = Y;
+      diameter = ballDiam;
+      col = ballColor;
+      speedY = sy;
+      speedX = sx;
+      
+
+
     }
 
     /*
      * SUMMATIVE REQUIRED Add a method called `getRadius()` that returns a float
      * representing the radius of the ball
      */
+    public float getRadius(){
+      return diameter / 2;
+
+
+
+    }
+
+    public void stop(){
+      saveSpeed();
+      speedX = 0;
+      speedY = 0;
+
+
+
+    }
+    public void start(){
+      speedX = tempSX;
+      speedY = tempSY;
+
+
+
+    }
+    public float getX(){
+      return x;
+
+
+    } public float getY(){
+      return y;
+
+
+    }
+    public void saveSpeed(){
+      tempSX = speedX;
+      tempSY = speedY;
+      
+
+    }
+
 
     /*
      * SUMMATIVE OPTIONAL Add a method called `stop()` that sets the ball speed to
@@ -46,7 +104,7 @@ class Ball {
      * 
      * If you create the methods, you'll need to think of a way to test them...
      */
-
+      
     /** Draws the ball. */
     public void drawBall() {
         /*
@@ -74,4 +132,5 @@ class Ball {
         x += speedX;
         y += speedY;
     }
+    
 }

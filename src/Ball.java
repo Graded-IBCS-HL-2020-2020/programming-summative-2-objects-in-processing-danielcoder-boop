@@ -7,10 +7,8 @@ class Ball {
     private int col;
     private float speedY;
     private float speedX;
-    public float useX;
-    public float useY;
-    public float tempSX;
-    public float tempSY;
+    private float tempSX;
+    private float tempSY;
 
     /**
      * The default constructor generates random values for most of the instance
@@ -21,10 +19,6 @@ class Ball {
         diameter = s.random(50, 150); // random diameter between 50 and 150
         x = s.random(diameter / 2, s.width - diameter / 2);
         y = s.random(diameter / 2, s.height - diameter / 2);
-        useX = x;
-        useY = y;
-        tempSX = 5;
-        tempSY = 5;
 
         /*
          * SUMMATIVE REQUIRED use the randomColor() method in the sketch to set default
@@ -51,14 +45,10 @@ class Ball {
       s = sketch;
       x = X;
       y = Y;
-      useX = X;
-      useY = Y;
       diameter = ballDiam;
       col = ballColor;
       speedY = sy;
       speedX = sx;
-      tempSX = sx;
-      tempSY = sy; 
       
 
 
@@ -76,6 +66,7 @@ class Ball {
     }
 
     public void stop(){
+      saveSpeed();
       speedX = 0;
       speedY = 0;
 
@@ -89,6 +80,22 @@ class Ball {
 
 
     }
+    public float getX(){
+      return x;
+
+
+    } public float getY(){
+      return y;
+
+
+    }
+    public void saveSpeed(){
+      tempSX = speedX;
+      tempSY = speedY;
+      
+
+    }
+
 
     /*
      * SUMMATIVE OPTIONAL Add a method called `stop()` that sets the ball speed to

@@ -40,11 +40,11 @@ class Bubble {
 
 
     }
-    public Bubble(Sketch sketch, float ballDiam, float sx, float sy) {
+    public Bubble(Sketch sketch, float bubbleDiam, float sx, float sy) {
       s = sketch;
       x = s.random(diameter / 2, s.width - diameter / 2);
       y = s.random(diameter / 2, s.height - diameter / 2);
-      diameter = ballDiam;
+      diameter = bubbleDiam;
       col = s.color(255, 150);
       speedY = sy;
       speedX = sx;
@@ -80,22 +80,7 @@ class Bubble {
 
 
     }
-
-
-
-    public void stop(){
-      speedX = 0;
-      speedY = 0;
-
-
-
-    }
-    public void start(){
-      speedX = 5;
-      speedY = 5;
-
-
-    } 
+ 
     /** Draws the bubble. */
     public void drawBubble() {
         s.stroke(borderColor);

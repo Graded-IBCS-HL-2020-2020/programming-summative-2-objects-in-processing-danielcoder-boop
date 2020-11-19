@@ -53,28 +53,7 @@ class Snowflake {
 
     public float getRadius(){
       return diameter / 2;
-
-    }
-
-
-    public void stop(){
-      speedX = 0;
-      speedY = 0;
-
-
-
-    }
-    public void start(){
-      speedX = 5;
-      speedY = 5;
-
-
-
-
-
-
-
-
+      
     }
     /** Draws the flake. */
     public void drawSnowflake() {

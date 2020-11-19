@@ -45,15 +45,15 @@ public class Sketch extends PApplet {
      */
     public void setup() {
         frameRate(10);
-        b1 = new Ball(this,  250,  250, 10, 255, 1, 1);
+        b1 = new Ball(this,  250,  250, 10, 255, 5, 5);
         b2 = new Ball(this);
         b3 = new Ball(this);
         b4 = new Ball(this);
-        bb1 = new Bubble(this);
+        bb1 = new Bubble(this, 100, 250, 10, 230, 12, 12);
         bb2 = new Bubble(this);
         bb3 = new Bubble(this);
         bb4 = new Bubble(this);
-        s1 = new Snowflake(this);
+        s1 = new Snowflake(this, 10, 10, 10, 10, 10, 10);
         s2 = new Snowflake(this);
         s3 = new Snowflake(this);
         s4 = new Snowflake(this);
@@ -116,8 +116,8 @@ public class Sketch extends PApplet {
 
 
     public void mousePressed(){
-      System.out.println("useX is: " + b1.useX + "mouseX is: " + mouseX + "mouseY is: " + mouseY);
-    if (mouseX > b1.useX - b1.getRadius() && mouseX < b1.useX + b1.getRadius() && mouseY > b1.useY - b1.getRadius() && mouseY < b1.useY + b1.getRadius()){
+      System.out.println("getX() is: " + b1.getX() + "mouseX is: " + mouseX + "mouseY is: " + mouseY);
+    if (mouseX > b1.getX() - b1.getRadius() && mouseX < b1.getX() + b1.getRadius() && mouseY > b1.getY() - b1.getRadius() && mouseY < b1.getY() + b1.getRadius()){
 
       b1.stop();
       b1s = true;
@@ -126,7 +126,7 @@ public class Sketch extends PApplet {
 
     }
     
-    if (mouseX > b2.useX - b2.getRadius() && mouseX < b2.useX + b2.getRadius() && mouseY > b2.useY - b2.getRadius() && mouseY < b2.useY + b2.getRadius()){
+    if (mouseX > b2.getX() - b2.getRadius() && mouseX < b2.getX() + b2.getRadius() && mouseY > b2.getY() - b2.getRadius() && mouseY < b2.getY() + b2.getRadius()){
 
       b2.stop();
       b2s = true;
@@ -134,7 +134,7 @@ public class Sketch extends PApplet {
 
     }
     
-    if (mouseX > b3.useX - b3.getRadius() && mouseX < b3.useX + b3.getRadius() && mouseY > b3.useY - b3.getRadius() && mouseY < b3.useY + b3.getRadius()){
+    if (mouseX > b3.getX() - b3.getRadius() && mouseX < b3.getX() + b3.getRadius() && mouseY > b3.getY() - b3.getRadius() && mouseY < b3.getY() + b3.getRadius()){
 
       b3.stop();
       b3s = true;
@@ -142,7 +142,7 @@ public class Sketch extends PApplet {
 
     }
     
-    if (mouseX > b4.useX - b4.getRadius() && mouseX < b4.useX + b4.getRadius() && mouseY > b4.useY - b4.getRadius() && mouseY < b4.useY + b4.getRadius()){
+    if (mouseX > b4.getX() - b4.getRadius() && mouseX < b4.getX() + b4.getRadius() && mouseY > b4.getY() - b4.getRadius() && mouseY < b4.getY() + b4.getRadius()){
 
       b4.stop();
       b4s = true;
@@ -156,19 +156,23 @@ public class Sketch extends PApplet {
     }
     public void mouseReleased(){
         if (b1s == true) {
+
           b1.start();
           b1s = false;
 
         }
         if (b2s == true){
+
           b2.start();
           b2s = false;
         }
         if (b3s == true){
+
           b3.start();
           b3s = false;
         }
         if (b4s == true){
+
           b4.start();
           b4s = false;
         }
